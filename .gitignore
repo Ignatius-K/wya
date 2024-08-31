@@ -1,0 +1,13 @@
+# pycache
+__pycache__
+
+# venv
+venv
+
+# .python-version
+.python-version
+
+# IDE
+.vscode
+.idea
+.DS_Store
