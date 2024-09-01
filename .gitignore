@@ -11,3 +11,14 @@ venv
 .vscode
 .idea
 .DS_Store
+.pyrightconfig.json
+
+# app config
+config.yaml
+
+# not required
+setup_scripts/setup_db_dev.sql
+sample_data/
+
+# env
+.env
