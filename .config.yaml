@@ -1,0 +1,14 @@
+default:
+  storage_engine: db_storage
+  dialect: postgresql
+  driver: psycopg2
+  encoding: utf8
+
+development:
+  debug: true
+
+test:
+  debug: true
+
+production:
+  debug: false
