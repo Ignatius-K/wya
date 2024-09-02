@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %} Events {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}?{{ cache_id }}" />
+{% endblock %}
+{% block content %}
+<div class="container events-container">
+    <div class="events-header">
+        <p>know the spot & join the fun</p>
+        <h2>Discover upcoming plots here</h2>
+        <p>Explore a variety of plots happening around you</p>
+    </div>
+    <div class="main-event">
+        <div class="main-event-img" {% if main_event.event_image_url %}
+            style="background-image: url('{{ main_event.event_image_url }}')" {% else %} style="
+				background-image: url('{{ url_for('static', filename='images/no_pic.png') }}');
+			" {% endif %}></div>
+        <div class="main-event-footer">
+            <div class="main-event-info">
+                <h3>{{ main_event.title }}</h3>
+                <p>
+                    {{ main_event.description }}
+                </p>
+            </div>
+            <button class="no-border-button">
+                Learn More <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="featured-events">
+        <div class="featured-events-header">
+            <h2>Trending plots</h2>
+            <p>Discover exciting events happening around you</p>
+        </div>
+        <div class="events-list">
+            {% for event in featured_events %}
+            {% include "event_card.html"%}
+            {% endfor %}
+        </div>
+        <div class="view-all-events">
+            <button class="primary-button view-all-events-button">
+                View All Events
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

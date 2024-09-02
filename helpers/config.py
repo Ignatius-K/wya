@@ -37,3 +37,15 @@ class Config:
     DB_DRIVER: str = loaded_config.get("driver")
     DB_ENCODING: str = loaded_config.get("encoding")
     DEBUG: bool = loaded_config.get("debug")
+
+    # Flask Config
+    APP_NAME: str = loaded_config.get("app_name")
+    APPLICATION_ROOT: str = loaded_config.get("application_root", "/web/")
+    FLASK_HOST: str = os.getenv("FLASK_HOST")
+    FLASK_PORT: int = os.getenv("WEB_FLASK_PORT")
+    FLASK_DEBUG: bool = loaded_config.get("debug")
+    TESTING: bool = env == "testing"
+    JSONIFY_PRETTYPRINT_REGULAR: bool = loaded_config.get(
+        "jsonify_prettyprint_regular", True)
+    JSON_SORT_KEYS: bool = loaded_config.get("json_sort_keys", True)
+    TEMPLATES_AUTO_RELOAD: bool = loaded_config.get("debug")

@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block title %} Events {% endblock %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}?{{ cache_id }}" />
+{% endblock %}
+{% block content %}
+<div class="container events-index">
+    <div class="events-header">
+        <h2>Don't miss out on the fun!</h2>
+        <p>Discover upcoming plots for you and your loved ones.</p>
+    </div>
+    <div class="events-container">
+        <div class="events-filter">
+            <div class="events-filter-header">
+                <h2>Filter events</h2>
+            </div>
+            <div class="events-filter-action">
+                <button class="primary-button">
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    Apply
+                </button>
+                <button class="secondary-button">
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    Reset
+                </button>
+            </div>
+            <div class="events-filter-body">
+                <h3>Status</h3>
+                <div class="events-filter-body-content">
+                    {% for event_status in event_statuses %}
+                    <div class="events-filter-body-content-item">
+                        <input type="checkbox" />
+                        <label for="status-ongoing">{{ event_status.value }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="events-filter-body">
+                <h3>Location</h3>
+                <div class="events-filter-body-content">
+                    {% for event_location in event_locations %}
+                    <div class="events-filter-body-content-item">
+                        <input type="checkbox" />
+                        <label for="status-ongoing">{{ event_location.value }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="events-filter-body">
+                <h3>Category</h3>
+                <div class="events-filter-body-content">
+                    {% for category in event_categories|sort(attribute='name')
+                    %}
+                    <div class="events-filter-body-content-item">
+                        <input type="checkbox" />
+                        <label for="status-ongoing">{{ category.name }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="events-section">
+            <form class="events-search">
+                <input type="text" placeholder="Search events by name, tags, location, etc." required />
+                <button class="primary-button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    Search
+                </button>
+            </form>
+            <div class="events-list">
+                {% for event in events %} {% include "event_card.html"%} {%
+                endfor %}
+            </div>
+            <div class="events-pagination">
+                <button class="primary-button">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </button>
+                <button class="primary-button">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

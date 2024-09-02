@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container auth-container">
+    <div class="auth-header">
+        <h2>Welcome back to <span>Chillspot</span></h2>
+        <p>Sign in to your account and share fun events with your friends</p>
+    </div>
+    <form class="auth-form" action="" method="post">
+        <input type="email" name="email" placeholder="Email" required>
+        <button class="primary-button" type="submit">Sign In</button>
+    </form>
+    <div class="auth-footer">
+        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Sign up</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,134 @@
+.footer-top {
+	display: flex;
+	align-items: center;
+	padding: 5rem 0;
+	border-top: 1px solid var(--primary-color);
+}
+
+.footer-top div {
+	flex: 1;
+}
+
+.footer-top-left h2 {
+	max-width: 500px;
+	font-size: 2.5rem;
+}
+
+.footer-top-right p {
+	font-size: 1.2rem;
+}
+
+.footer-top-actions {
+	display: flex;
+	gap: 1rem;
+	padding-block: 1rem;
+}
+
+.footer-main {
+	display: flex;
+	justify-content: space-between;
+	padding-block: 1rem 5rem;
+	gap: 1rem;
+	border-bottom: 1px solid var(--primary-color);
+}
+
+.footer-main-left {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-self: flex-start;
+}
+
+.footer-main-left .logo {
+	background-image: url("../images/dark_base_logo.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 3rem;
+	height: 3rem;
+}
+
+.footer-main-left .name-logo {
+	background-image: url("../images/logo.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 10rem;
+	height: 4rem;
+}
+
+.footer-main-middle {
+	flex: 2;
+	display: flex;
+	gap: 5rem;
+}
+
+.footer-main-middle section {
+	padding-block: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.footer-main-middle section {
+	font-size: 0.8rem;
+}
+
+.footer-main-middle section ul li {
+	font-size: 0.8rem;
+	padding: 0.5rem 0;
+}
+
+.footer-main-right {
+	flex: 2;
+}
+
+.footer-main-right-subscribe {
+	display: flex;
+	gap: 1rem;
+	padding-block: 1rem 0rem;
+}
+
+.footer-main-right-subscribe input {
+	flex: 1;
+	padding: 0.8rem 1.5rem;
+	font-size: 1.2rem;
+	border: 1px solid var(--primary-color);
+}
+
+.terms-conditions a,
+.terms-conditions {
+	font-size: 0.9rem;
+}
+
+.terms-conditions a {
+	text-decoration: underline;
+}
+
+.footer-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: 1rem 3rem;
+	font-size: 0.9rem;
+}
+
+.footer-bottom-left {
+	display: flex;
+	gap: 2rem;
+}
+
+.footer-bottom-left p {
+	margin: 0;
+}
+
+.footer-bottom-left a {
+	font-size: 0.9rem;
+	text-decoration: underline;
+}
+
+.footer-bottom-right a {
+	font-size: 1.5rem;
+	margin-inline: 0.5rem;
+}

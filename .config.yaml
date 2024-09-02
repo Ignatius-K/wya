@@ -1,14 +1,20 @@
 default:
+  app_name: chillspot
   storage_engine: db_storage
   dialect: postgresql
   driver: psycopg2
   encoding: utf8
+  jsonify_prettyprint_regular: true
+  json_sort_keys: true
 
 development:
   debug: true
 
-test:
+testing:
   debug: true
 
 production:
   debug: false
+  flask_env: production
+  jsonify_prettyprint_regular: false
+  json_sort_keys: false

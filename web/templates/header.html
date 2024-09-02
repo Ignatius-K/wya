@@ -1,0 +1,21 @@
+<header>
+    <div class="header-content">
+        <div class="header-left">
+            <div class="header-base-logo"></div>
+            <div class="header-logo"></div>
+        </div>
+
+        <div class="header-right">
+            <a href="{{ url_for('core.index') }}">Home</a>
+            <a href="{{ url_for('events.index') }}?new">Discover Events</a>
+            <a href="{{ url_for('events.index') }}?upcoming">Upcoming Events</a>
+            <!-- <a href="{{ url_for('events.index') }}?mine">My events</a> -->
+            <a href="#">More Options
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </a>
+
+            <button class="primary-button sign-in">Login</button>
+            <button class="secondary-button sign-up">Register</button>
+        </div>
+    </div>
+</header>

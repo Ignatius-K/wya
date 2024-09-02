@@ -1,0 +1,77 @@
+:root {
+	/* Colors */
+	--primary-color: #000;
+	--secondary-color: #fff;
+
+	/* Fonts */
+	--font-family: "Roboto", sans-serif;
+	--font-size: 16px;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: var(--font-family);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-family);
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+body a {
+	font-size: var(--font-size);
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+body ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+button {
+	font-family: var(--secondary-font-family);
+	font-size: var(--font-size);
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+button i {
+	font-size: 1rem;
+	margin-left: 0.5rem;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+.primary-button {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	border: 1px solid var(--primary-color);
+}
+
+.secondary-button {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+}
+
+.no-border-button {
+	border: none;
+	background-color: transparent;
+	color: var(--primary-color);
+}
+
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}

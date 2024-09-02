@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if title %}
+    <title>{{ title }} | Chillspot</title>
+    {% else %}
+    <title>Chillspot</title>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}?{{ cache_id }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}?{{ cache_id}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}?{{ cache_id}}" />
+    {% block styles %}{% endblock %}
+    <style>
+        /* define fonts */
+        @font-face {
+            font-family: "Roboto";
+            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Regular.ttf') }}") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Roboto";
+            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Medium.ttf') }}") format("truetype");
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Roboto";
+            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Bold.ttf') }}") format("truetype");
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+
+    <!-- add font awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/font-awesome/css/font-awesome.min.css') }}" />
+
+</head>
+
+<body>
+    {% include "header.html" %}
+    <div class="main-content">{% block content %}{% endblock %}</div>
+    {% include "footer.html" %}
+
+    <!-- js scripts -->
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>
