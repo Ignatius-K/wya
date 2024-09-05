@@ -5,17 +5,25 @@
             <div class="header-logo"></div>
         </div>
 
+        <!-- when the user is logged in -->
         <div class="header-right">
             <a href="{{ url_for('core.index') }}">Home</a>
             <a href="{{ url_for('events.index') }}?new">Discover Events</a>
-            <a href="{{ url_for('events.index') }}?upcoming">Upcoming Events</a>
-            <!-- <a href="{{ url_for('events.index') }}?mine">My events</a> -->
-            <a href="#">More Options
-                <i class="fa fa-angle-down" aria-hidden="true"></i>
-            </a>
+            <!-- <a href="{{ url_for('events.index') }}?upcoming">Upcoming Events</a> -->
+            <a href="{{ url_for('events.create_event') }}">Share a plot</a>
 
+            {% if current_user.is_authenticated %}
+            <div class="divider"></div>
+            <a href="{{ url_for('events.user_events') }}">My events</a>
+            {% endif %}
+            <!-- <a href="{{ url_for('events.index') }}?mine">My events</a> -->
+
+            {% if not current_user.is_authenticated %}
             <button class="primary-button sign-in">Login</button>
             <button class="secondary-button sign-up">Register</button>
+            {% else %}
+            <button class="primary-button sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+            {% endif %}
         </div>
     </div>
 </header>

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %} Create event {% endblock %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}?{{ cache_id }}" />
+{% endblock %}
+{% block content %}
+<div class="container create-event-page">
+    <div class="events-header">
+        <h2>Create an event</h2>
+        <p>Please fill out the form below to share your event with the world</p>
+    </div>
+    <form action="" method="post" class="event-form">
+        {{ form.hidden_tag() }}
+
+        {{ form.timezone(hidden=True, id="event-timezone") }}
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            {{ form.category.label }}
+            {{ form.category }}
+            </select>
+        </div>
+
+        <div class="form-group">
+            {{ form.location_type.label }}
+            {{ form.location_type(id="event-location-type") }}
+        </div>
+        <div class="form-group">
+            {{ form.location_name.label }}
+            {{ form.location_name(id="location") }}
+        </div>
+        <div class="form-group">
+            {{ form.online_event_link.label }}
+            {{ form.online_event_link(id="online-event-link") }}
+        </div>
+        <div class="form-group">
+            <label for="time">When is this event happening?</label>
+            <div class="form-group-input">
+                <div class="form-group">
+                    {{ form.start_date.label }}
+                    {{ form.start_date }}
+                    {% if form.start_date.errors %}
+                    <p class="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{
+                        form.start_date.errors[0] }}</p>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.end_date.label }}
+                    {{ form.end_date }}
+                    {% if form.end_date.errors %}
+                    <p class="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{
+                        form.end_date.errors[0] }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <button class="primary-button">Create event</button>
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3oc6-1uBuTm0ISqYb0f4XfoaSSHetin0&libraries=places" async
+    defer></script>
+<script src="{{ url_for('static', filename='scripts/create_events.js') }}?{{ cache_id }}"></script>
+{% endblock %}

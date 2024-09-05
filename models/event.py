@@ -58,6 +58,8 @@ class Event(BaseModel, Base):
     )
 
     # relationships
+    _sub_category = relationship(
+        'EventSubCategory', back_populates='_events', lazy='select')
     _organized_by = relationship(
         'User', back_populates='_events_organized', lazy='select')
     _liked_by = relationship(

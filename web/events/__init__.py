@@ -7,6 +7,6 @@ from flask import Blueprint
 events_bp = Blueprint("events", __name__)
 
 # fmt: off
-from .routes import *
+from .views import *
 
 # fmt: on

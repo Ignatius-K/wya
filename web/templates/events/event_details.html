@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/event_details.css') }}?{{ cache_id }}">
+{% endblock %}
+{% block content %}
+<div class="container event-details">
+    <section class="main-details">
+        <div class="event-meta-info">
+            <div class="events-links">
+                <a href="{{ url_for('events.index') }}">Events</a>
+                <i class="fa fa-chevron-right"></i>
+                <a href="{{ url_for('events.event_details', event_id=event.id) }}">{{ event._sub_category.name }}
+                    plot</a>
+            </div>
+            <h1>{{ event.title }}</h1>
+            <p>{{ event.description }}</p>
+            <div class="event-info">
+                <div class="event-info-item">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                    <span>{{ event.created_at.strftime('%a, %d %B %Y') }}</span>
+                </div>
+                <div class="event-info-item">
+                    <i class="fa fa-clock-o"></i>
+                    <span>{{ event.created_at.strftime('%I:%M %p') }} ({{ event.timezone }})</span>
+                </div>
+                <div class="event-info-item">
+                    <i class="fa fa-map-marker"></i>
+                    <span>{{ event.location_type.value }}</span>
+                </div>
+                {% if event.location_type.name != 'IN_PERSON' %}
+                <div class="event-info-item event-info-online">
+                    <i class="fa fa-link" aria-hidden="true"></i>
+                    <a href="{{ event.online_event_link }}" target="_blank">{{ event.online_event_link }}</a>
+                </div>
+                {% endif %}
+                {% if event.location_type.name != 'ONLINE' %}
+                <div class="event-info-item event-info-location">
+                    <i class="fa fa-building-o" aria-hidden="true"></i>
+                    <span>{{ event.location_name }}</span>
+                </div>
+                {% endif %}
+            </div>
+
+            {# how users can interact with the event #}
+            <div class="event-actions">
+                {% if is_saved %}
+                <p>Are you no longer interested in this event?</p>
+                <div class="actions">
+                    <button class="primary-button unsave-event-button" data-event-id="{{ event.id }}">Unsave</button>
+                    <button class="secondary-button">
+                        <i class="fa fa-share-alt"></i>
+                        Share
+                    </button>
+                </div>
+                {% else%}
+                <p>Are you interested in this event?</p>
+                <div class="actions">
+                    <button class="primary-button save-event-button" data-event-id="{{ event.id }}">SAVE</button>
+                    <button class="secondary-button">
+                        <i class="fa fa-share-alt"></i>
+                        Share
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="event-image" {% if event.event_image_url %}
+            style="background-image: url('{{ event.event_image_url }}')" {% else %}
+            style="background-image: url('{{ url_for('static', filename='images/no_pic.png') }}')" {% endif %}>
+            {% if is_admin or is_owner %}
+            <button class="edit-event-image-button" data-event-id="{{ event.id }}">
+                <i class="fa fa-pencil"></i>
+            </button>
+            {% endif %}
+        </div>
+    </section>
+    <section class="sec-details">
+        <div class="event-info-item">
+            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <span class="event-metric">{{ event_likes }}</span>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='scripts/event_details.js') }}?{{ cache_id }}"></script>
+{% endblock %}

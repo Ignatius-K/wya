@@ -47,3 +47,22 @@ header {
 .header-right .primary-button {
 	margin-left: 1rem;
 }
+
+.header-right {
+	display: flex;
+	align-items: center;
+}
+
+.header-right .divider {
+	height: 100%;
+	width: 2px;
+	height: 2rem;
+	background-color: var(--primary-color);
+	display: inline-block;
+	align-self: center;
+	margin: 0 1rem;
+}
+
+.header-right button {
+	margin-left: 1rem;
+}

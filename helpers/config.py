@@ -37,10 +37,11 @@ class Config:
     DB_DRIVER: str = loaded_config.get("driver")
     DB_ENCODING: str = loaded_config.get("encoding")
     DEBUG: bool = loaded_config.get("debug")
+    SQL_ECHO: bool = loaded_config.get("sql_echo")
 
     # Flask Config
+    SECRET_KEY: str = os.getenv("SECRET_KEY")
     APP_NAME: str = loaded_config.get("app_name")
-    APPLICATION_ROOT: str = loaded_config.get("application_root", "/web/")
     FLASK_HOST: str = os.getenv("FLASK_HOST")
     FLASK_PORT: int = os.getenv("WEB_FLASK_PORT")
     FLASK_DEBUG: bool = loaded_config.get("debug")

@@ -55,7 +55,7 @@ class DBStorage(StorageEngineInterface):
             f"{config.DB_USERNAME}:{config.DB_PASSWORD}@" +
             f"{config.DB_HOST}:{config.DB_PORT}/{config.DB_NAME}",
             client_encoding=config.DB_ENCODING,
-            echo=config.DEBUG,
+            echo=config.SQL_ECHO,
             pool_pre_ping=True,
         )
 
@@ -112,6 +112,12 @@ class DBStorage(StorageEngineInterface):
             return None
         obj_key = f'{cls.__name__}.{id}'
         return self.all_per_model(cls).get(obj_key, None)
+
+    def query(self, model_cls, **kwargs):
+        """Builds a query for a specific model"""
+        if model_cls not in all_models:
+            return None
+        return self.__session.query(model_cls).filter_by(**kwargs)
 
     def count(self, cls):
         """Gets the count of a specific model"""

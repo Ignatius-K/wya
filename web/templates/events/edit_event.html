@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %} Create event {% endblock %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/event_edit.css') }}?{{ cache_id }}" />
+{% endblock %}
+{% block content %}
+<div class="container edit-event-page">
+    <div class="events-header">
+        <h2>{{ event.title }}</h2>
+        <p>Make this event better for everyone</p>
+    </div>
+
+    {# update event image #}
+    <section class="event-image-section">
+        <h3>Update event image</h3>
+        <form action="" method="post" class="event-form">
+            {{ update_image_form.hidden_tag() }}
+
+            {# define the action #}
+            <input type="text" name="action" value="update_image" hidden>
+            {{ update_image_form.image(id="event-image") }}
+            {% if update_image_form.image.errors %}
+            <p class="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{
+                update_image_form.image.errors[0] }}</p>
+            {% endif %}
+            <button type="submit" class="primary-button">Update</button>
+        </form>
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3oc6-1uBuTm0ISqYb0f4XfoaSSHetin0&libraries=places" async
+    defer></script>
+<script src="{{ url_for('static', filename='scripts/create_events.js') }}?{{ cache_id }}"></script>
+{% endblock %}

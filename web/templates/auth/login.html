@@ -11,7 +11,9 @@
         <p>Sign in to your account and share fun events with your friends</p>
     </div>
     <form class="auth-form" action="" method="post">
-        <input type="email" name="email" placeholder="Email" required>
+        {{ form.hidden_tag() }}
+        {{ form.email() }}
+        {{ form.password() }}
         <button class="primary-button" type="submit">Sign In</button>
     </form>
     <div class="auth-footer">

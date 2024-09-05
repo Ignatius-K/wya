@@ -6,6 +6,7 @@ default:
   encoding: utf8
   jsonify_prettyprint_regular: true
   json_sort_keys: true
+  sql_echo: false
 
 development:
   debug: true

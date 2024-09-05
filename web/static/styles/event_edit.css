@@ -1,0 +1,43 @@
+.edit-event-page {
+	padding-block: 2rem;
+	min-height: 75vh;
+}
+
+.events-header {
+	text-align: center;
+	padding: 1.5rem 1rem;
+}
+
+.events-header h2 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-block: 0rem;
+}
+
+.edit-event-page section {
+	padding: 0.5rem;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.edit-event-page section h3 {
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin-block: 0.8rem;
+}
+
+.edit-event-page button {
+	margin-top: 1rem;
+	display: block;
+	margin-inline: auto 1rem;
+}
+
+.event-image-section input {
+	border: none;
+	border-bottom: 1px solid #ccc;
+}
+
+.edit-event-page p.error {
+	margin-block: 0.3rem 0rem;
+}

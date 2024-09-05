@@ -1,5 +1,6 @@
 <footer>
     <div class="container">
+        {% if hide_footer is not defined %}
         <div class="footer-top">
             <div class="footer-top-left">
                 <h2>Discover Exciting Events Near You</h2>
@@ -64,6 +65,7 @@
                 </p>
             </div>
         </div>
+        {% endif %}
         <div class="footer-bottom">
             <div class="footer-bottom-left">
                 <p>&copy; 2024 Chillspot. All rights reserved.</p>

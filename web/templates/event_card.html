@@ -1,4 +1,4 @@
-<div class="event-card">
+<div class="event-card" data-event-id="{{ event.id }}">
     <div class="event-card-image" {% if event.event_image_url %}
         style="background-image: url('{{ event.event_image_url }}')" {% else %}
         style="background-image: url('{{ url_for('static', filename='images/no_pic.png') }}')" {% endif %}>

@@ -1,0 +1,11 @@
+<div class="message {{ category }}">
+    {% if category == "success" %}
+    <i class="fa fa-check-circle" aria-hidden="true"></i>
+    {% elif category == "error" %}
+    <i class="fa fa-times-circle" aria-hidden="true"></i>
+    {% elif category == "info" %}
+    <i class="fa fa-info-circle" aria-hidden="true"></i>
+    {% endif %}
+    <p class="message-body">{{ message }}</p>
+    <i class="fa fa-trash delete-icon" aria-hidden="true"></i>
+</div>

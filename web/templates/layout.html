@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}?{{ cache_id }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}?{{ cache_id}}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}?{{ cache_id}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/shared.css') }}?{{ cache_id}}" />
     {% block styles %}{% endblock %}
     <style>
         /* define fonts */
@@ -45,7 +46,19 @@
 
 <body>
     {% include "header.html" %}
-    <div class="main-content">{% block content %}{% endblock %}</div>
+    <div class="main-content">
+        <div class="message-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% include "shared/message.html" %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+
     {% include "footer.html" %}
 
     <!-- js scripts -->

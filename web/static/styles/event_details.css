@@ -1,0 +1,123 @@
+.event-details {
+	padding: 4rem 1rem;
+}
+
+.event-details .main-details {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.event-details .main-details div {
+	flex: 1;
+}
+
+.event-image {
+	width: 100%;
+	height: 50vh;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.event-details .main-details .event-meta-info .events-links {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.event-details .main-details .event-meta-info .events-links a {
+	font-size: 0.8rem;
+}
+
+.event-details .main-details .event-meta-info .events-links i {
+	font-size: 0.7rem;
+}
+
+.event-info {
+	padding-block: 1rem 2rem;
+}
+
+.event-meta-info h1 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-bottom: 0rem;
+}
+
+.event-meta-info p {
+	margin-top: 0.5rem;
+}
+
+.event-meta-info .event-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.event-info-item {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.event-info-item i {
+	font-size: 0.9rem;
+}
+
+.event-info-item span {
+	font-size: 0.85rem;
+	word-wrap: nowrap;
+}
+
+.event-info-online,
+.event-info-location {
+	grid-column: 1 / -1;
+}
+
+.event-info-online a {
+	font-size: 0.85rem;
+	text-decoration: underline;
+}
+
+.event-actions p {
+	font-size: 0.9rem;
+}
+
+.event-actions button {
+	width: 100%;
+	max-width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+.event-actions .actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.event-info-item .event-metric {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.edit-event-image-button {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background-color: #fff;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 2rem;
+	width: 2rem;
+}
+
+.edit-event-image-button i {
+	font-size: 1rem;
+	margin: 0rem;
+}

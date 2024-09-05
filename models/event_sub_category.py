@@ -29,3 +29,6 @@ class EventSubCategory(BaseModel, Base):
     _category = relationship(
         'EventCategory', back_populates='_sub_categories', lazy='select'
     )
+    _events = relationship(
+        'Event', back_populates='_sub_category', lazy='select'
+    )

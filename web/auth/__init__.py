@@ -7,6 +7,6 @@ from flask import Blueprint
 auth_bp = Blueprint("auth", __name__)
 
 # fmt: off
-from web.auth.routes import *
+from web.auth.views import *
 
 # fmt: on

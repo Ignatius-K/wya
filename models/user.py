@@ -27,7 +27,7 @@ class User(BaseModel, Base):
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
     email = Column(String(128), nullable=False, unique=True)
-    # profile_picture = Column(Text)
+    password = Column(String(128), nullable=False)
     role = Column(SQLEnum(UserRole), nullable=False, default=UserRole.USER)
     locked = Column(Boolean, nullable=False, default=False)
 
@@ -39,3 +39,19 @@ class User(BaseModel, Base):
         back_populates='_liked_by', lazy='select'
     )
     _reviews = relationship('Review', back_populates='_user', lazy='select')
+
+    # flask login required methods
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return not self.locked
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id

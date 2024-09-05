@@ -39,6 +39,10 @@ class BaseModel:
         """Return the string representation of the model"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.to_dict()}"
 
+    def __eq__(self, other):
+        """Compare two models"""
+        return self.id == other.id
+
     def to_dict(self):
         """Convert the model to a dictionary"""
         keys_to_ignore = ['_sa_instance_state', 'password', 'created_by']
