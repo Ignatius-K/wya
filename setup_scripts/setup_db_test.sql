@@ -1,11 +1,26 @@
--- Sets up the Postgres DB for test
+-- Sets up the Postgres DB for development
 
 -- Create database
-CREATE DATABASE IF NOT EXISTS wya_test_db;
+CREATE EXTENSION IF NOT EXISTS dblink;
 
--- Create 'test' user
-CREATE USER IF NOT EXISTS 'wya_test'@'172.17.0.1' IDENTIFIED BY 'wya_test_pwd';
+DO $$
+BEGIN
+   IF EXISTS (SELECT FROM pg_database WHERE datname = 'wya_dev_db') THEN
+      RAISE NOTICE 'Database already exists';
+   ELSE
+      PERFORM dblink_exec('dbname=' || current_database()
+                        , 'CREATE DATABASE wya_dev_db');
+   END IF;
+END $$;
 
--- Give user privileges
-GRANT ALL PRIVILEGES ON `wya_test_db`.* TO 'wya_test'@'172.17.0.1';
-FLUSH PRIVILEGES;
+-- Create 'dev' user
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'wya_dev') THEN
+        CREATE USER wya_dev WITH PASSWORD 'wya_dev_password';
+    ELSE
+        RAISE NOTICE 'User wya_dev already exists';
+    END IF;
+END $$;
+
+GRANT ALL PRIVILEGES ON DATABASE wya_dev_db TO wya_dev;
