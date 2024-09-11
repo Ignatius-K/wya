@@ -3,7 +3,7 @@ This module defines the routes for the core module.
 """
 
 import random
-from flask import render_template
+from flask import abort, make_response, render_template, send_from_directory, url_for, current_app
 from uuid import uuid4
 
 from web.core import core_bp
@@ -11,8 +11,17 @@ from models import storage
 from models.event import Event
 
 # define favicon route
-core_bp.add_url_rule("/favicon.ico", "favicon",
-                     redirect_to="/static/images/base_logo.png")
+def get_favicorn():
+    if current_app.static_folder is not None:
+        return send_from_directory(
+            current_app.static_folder,
+            path='images/base_logo.png'
+        )
+    abort(404)
+
+
+core_bp.add_url_rule(
+    "/favicon.ico", view_func=get_favicorn)
 
 
 @core_bp.route("/")
