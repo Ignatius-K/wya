@@ -1,70 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		{% if title %}
+		<title>{{ title }} | Chillspot</title>
+		{% else %}
+		<title>Chillspot</title>
+		{% endif %} {# add meta tags #}
+		<meta name="generator" content="Chillspot" />
+		<meta name="application-name" content="Chillspot" />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="author" content="Chillspot" />
+		<meta name="robots" content="index, follow" />
+		<meta
+			name="keywords"
+			content="parties in uganda, uganda parties, uganda social gatherings, ugandan social hangouts"
+		/>
+		<meta
+			name="description"
+			content="Discover new and exciting social gatherings happening all over Uganda"
+		/>
+		<meta
+			property="og:image"
+			content="{{ url_for('static', filename='images/happy_people.png') }}"
+		/>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% if title %}
-    <title>{{ title }} | Chillspot</title>
-    {% else %}
-    <title>Chillspot</title>
-    {% endif %}
+        {# add meta tags #}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Chillspot" />
+		<meta name="twitter:site" content="@chillspot256" />
+		<meta name="twitter:creator" content="@chillspot256" />
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}?{{ cache_id }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}?{{ cache_id}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}?{{ cache_id}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/shared.css') }}?{{ cache_id}}" />
-    {% block styles %}{% endblock %}
-    <style>
-        /* define fonts */
-        @font-face {
-            font-family: "Roboto";
-            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Regular.ttf') }}") format("truetype");
-            font-weight: normal;
-            font-style: normal;
-        }
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		{# add meta tags #}
 
-        @font-face {
-            font-family: "Roboto";
-            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Medium.ttf') }}") format("truetype");
-            font-weight: 500;
-            font-style: normal;
-        }
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles/layout.css') }}?{{ cache_id }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles/footer.css') }}?{{ cache_id}}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles/header.css') }}?{{ cache_id}}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles/shared.css') }}?{{ cache_id}}"
+		/>
+		{% block styles %}{% endblock %}
+		<style>
+			/* define fonts */
+			@font-face {
+				font-family: "Roboto";
+				src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Regular.ttf') }}")
+					format("truetype");
+				font-weight: normal;
+				font-style: normal;
+			}
 
-        @font-face {
-            font-family: "Roboto";
-            src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Bold.ttf') }}") format("truetype");
-            font-weight: 700;
-            font-style: normal;
-        }
-    </style>
+			@font-face {
+				font-family: "Roboto";
+				src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Medium.ttf') }}")
+					format("truetype");
+				font-weight: 500;
+				font-style: normal;
+			}
 
-    <!-- add font awesome -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/font-awesome/css/font-awesome.min.css') }}" />
+			@font-face {
+				font-family: "Roboto";
+				src: url("{{ url_for('static', filename='fonts/Roboto/Roboto-Bold.ttf') }}")
+					format("truetype");
+				font-weight: 700;
+				font-style: normal;
+			}
+		</style>
 
-</head>
+		<!-- add font awesome -->
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='fonts/font-awesome/css/font-awesome.min.css') }}"
+		/>
+	</head>
 
-<body>
-    {% include "header.html" %}
-    <div class="main-content">
-        <div class="message-container">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            {% include "shared/message.html" %}
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-        </div>
-        {% block content %}{% endblock %}
-    </div>
+	<body>
+		{% include "header.html" %}
+		<div class="main-content">
+			<div class="message-container">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %} {% for category, message in messages %} {%
+				include "shared/message.html" %} {% endfor %} {% endif %} {%
+				endwith %}
+			</div>
+			{% block content %}{% endblock %}
+		</div>
 
-    {% include "footer.html" %}
+		{% include "footer.html" %}
 
-    <!-- js scripts -->
-    {% block scripts %}
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-    {% endblock %}
-</body>
-
+		<!-- js scripts -->
+		{% block scripts %}
+		<script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+		{% endblock %}
+	</body>
 </html>

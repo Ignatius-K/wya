@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %} Events {% endblock %}
+{% block title %} Events in Uganda {% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}?{{ cache_id }}" />
 {% endblock %}
@@ -7,7 +7,7 @@
 <div class="container events-container">
     <div class="events-header">
         <!-- <p>know the spot</p> -->
-        <h2>Join & share the fun! <span class="emoji">🎉</span></h2>
+        <h2>Join & share the fun in Uganda! <span class="emoji">🎉</span></h2>
         <!-- <p>share your favorite hangouts</p> -->
     </div>
     <div class="main-event">
@@ -30,8 +30,8 @@
 
     <div class="featured-events">
         <div class="featured-events-header">
-            <h2>Trending plots</h2>
-            <p>Discover exciting events happening around you</p>
+            <h2>Trending plots in Uganda</h2>
+            <p>Discover exciting events happening around you in Uganda</p>
         </div>
         <div class="events-list">
             {% for event in featured_events %}
@@ -40,7 +40,7 @@
         </div>
         <div class="view-all-events">
             <button class="primary-button view-all-events-button">
-                View All Events
+                View All Events in Uganda
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </button>
         </div>
