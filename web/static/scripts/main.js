@@ -5,6 +5,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
+	// view main event
+	const viewMainEventsButton = document.querySelector("#view-main-event");
+	if (viewMainEventsButton) {
+		viewMainEventsButton.addEventListener("click", () => {
+			const mainEventId =
+				viewMainEventsButton.getAttribute("data-event-id");
+			window.location.href = "/events/" + mainEventId;
+		});
+	}
+
 	// view all events button
 	const viewAllEventsButton = document.querySelector(
 		"button.view-all-events-button"

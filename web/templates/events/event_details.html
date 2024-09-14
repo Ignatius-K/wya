@@ -1,8 +1,35 @@
 {% extends "layout.html" %}
+
+{% block meta %}
+{# twitter #}
+<meta name="twitter:title" content="{{ title | e }}" />
+<meta name="twitter:description" content="{{ event.description | e }}" />
+{% if event.event_image_url %}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ event.event_image_url }}" />
+{% else %}
+<meta name="twitter:card" content="summary" />
+{% endif %}
+<meta name="twitter:site" content="@chillspot256" />
+{# og #}
+<meta property="og:title" content="{{ event.title | e }}" />
+<meta property="og:description" content="{{ event.description | e }}" />
+{% if event.event_image_url %}
+<meta property="og:image" content="{{ event.event_image_url | e }}" />
+{% endif %}
+<meta property="og:url" content="{{ url_for('events.event_details', event_id=event.id, _external=True) }}" />
+<meta property="og:type" content="event" />
+<meta property="og:site_name" content="ChillSpot" />
+{% if event.location_name %}
+<meta property="event:location" content="{{ event.location_name | e }}" />
+{% endif %}
+{% endblock %}
+
 {% block styles %}
 {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/event_details.css') }}?{{ cache_id }}">
 {% endblock %}
+
 {% block content %}
 <div class="container event-details">
     <section class="main-details">
@@ -83,6 +110,7 @@
     </section>
 </div>
 {% endblock %}
+
 {% block scripts %}
 {{ super() }}
 <script src="{{ url_for('static', filename='scripts/event_details.js') }}?{{ cache_id }}"></script>
