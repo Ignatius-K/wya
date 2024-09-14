@@ -7,7 +7,7 @@
 		<title>{{ title }} | Chillspot</title>
 		{% else %}
 		<title>Chillspot</title>
-		{% endif %} {# add meta tags #}
+		{% endif %}
 		<meta name="application-name" content="ChillSpot" />
 		<meta name="theme-color" content="#ffffff" />
 		<meta name="robots" content="index, follow" />
@@ -19,31 +19,8 @@
 			name="description"
 			content="Discover new and exciting social gatherings happening all over Uganda"
 		/>
-
-		{# add meta tags #}
-		<meta property="og:title" content="ChillSpot" />
-		<meta
-			property="og:description"
-			content="Discover new and exciting social gatherings happening all over Uganda"
-		/>
-		<meta
-			property="og:image"
-			content="{{ request.url_root }}{{ url_for('static', filename='images/happy_people.png') }}"
-		/>
-
-		{# for x #}
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="ChillSpot" />
-		<meta
-			name="twitter:description"
-			content="Discover new and exciting social gatherings happening all over Uganda"
-		/>
-		<meta
-			name="twitter:image"
-			content="{{ request.url_root }}{{ url_for('static', filename='images/happy_people.png') }}"
-		/>
-		{# add meta tags #}
-
+        {# Add more meta tags #}
+		{% block meta %}{% endblock %}
 		<link
 			rel="stylesheet"
 			href="{{ url_for('static', filename='styles/layout.css') }}?{{ cache_id }}"

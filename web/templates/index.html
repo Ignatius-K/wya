@@ -1,8 +1,23 @@
-{% extends "layout.html" %}
-{% block title %} Events in Uganda {% endblock %}
+{% extends "layout.html" %} {% block title %} Events in Uganda {% endblock %}
+
+{% block meta %}
+{# og tags #}
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ChillSpot" />
+<meta property="og:description" content="Discover new and exciting social gatherings happening all over Uganda" />
+<meta property="og:image" content="{{ url_for('static', filename='images/happy_people.png') }}" />
+
+{# twitter tags #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="ChillSpot" />
+<meta name="twitter:description" content="Discover new and exciting social gatherings happening all over Uganda" />
+<meta name="twitter:image" content="{{ url_for('static', filename='images/happy_people.png') }}" />
+{% endblock %}
+
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}?{{ cache_id }}" />
 {% endblock %}
+
 {% block content %}
 <div class="container events-container">
     <div class="events-header">
@@ -12,15 +27,12 @@
     </div>
     <div class="main-event">
         <div class="main-event-img" {% if main_event.event_image_url %}
-            style="background-image: url('{{ main_event.event_image_url }}')" {% else %} style="
-				background-image: url('{{ url_for('static', filename='images/no_pic.png') }}');
-			" {% endif %}></div>
+            style="background-image: url('{{ main_event.event_image_url }}')" {% else %}
+            style="background-image: url('{{ url_for('static', filename='images/no_pic.png') }}');" {% endif %}></div>
         <div class="main-event-footer">
             <div class="main-event-info">
                 <h3>{{ main_event.title }}</h3>
-                <p>
-                    {{ main_event.description }}
-                </p>
+                <p>{{ main_event.description }}</p>
             </div>
             <button class="no-border-button">
                 Learn More <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -35,7 +47,7 @@
         </div>
         <div class="events-list">
             {% for event in featured_events %}
-            {% include "event_card.html"%}
+            {% include "event_card.html" %}
             {% endfor %}
         </div>
         <div class="view-all-events">
