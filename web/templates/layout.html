@@ -8,10 +8,8 @@
 		{% else %}
 		<title>Chillspot</title>
 		{% endif %} {# add meta tags #}
-		<meta name="generator" content="Chillspot" />
-		<meta name="application-name" content="Chillspot" />
+		<meta name="application-name" content="ChillSpot" />
 		<meta name="theme-color" content="#ffffff" />
-		<meta name="author" content="Chillspot" />
 		<meta name="robots" content="index, follow" />
 		<meta
 			name="keywords"
@@ -30,18 +28,20 @@
 		/>
 		<meta
 			property="og:image"
-			content="{{ url_for('static', filename='images/happy_people.png') }}"
+			content="{{ request.url_root }}{{ url_for('static', filename='images/happy_people.png') }}"
 		/>
 
 		{# for x #}
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="ChillSpot" />
 		<meta
-        name="twitter:description"
-        content="Discover new and exciting social gatherings happening all over Uganda"
+			name="twitter:description"
+			content="Discover new and exciting social gatherings happening all over Uganda"
 		/>
-		<meta name="twitter:image" content="/static/images/happy_people.png" />
-		{# for x #}
+		<meta
+			name="twitter:image"
+			content="{{ request.url_root }}{{ url_for('static', filename='images/happy_people.png') }}"
+		/>
 		{# add meta tags #}
 
 		<link
